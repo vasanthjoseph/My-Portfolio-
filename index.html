@@ -1,221 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vasanthakumar A | AI/ML Engineer</title>
+    <title>Vasanthakumar A | AI/ML Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-in',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'pulse-slow': 'pulse 5s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --dark: #1e293b;
-            --light: #f8fafc;
-        }
-        
         body {
             font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
         }
         
-        .dark {
-            background-color: #0f172a;
-            color: #f8fafc;
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(90deg, #3b82f6, #8b5cf6);
         }
         
-        .light {
-            background-color: #f8fafc;
-            color: #1e293b;
+        .dark .gradient-text {
+            background-image: linear-gradient(90deg, #60a5fa, #a78bfa);
         }
         
-        .theme-toggle {
-            transition: all 0.3s ease;
-        }
-        
-        .theme-toggle:hover {
-            transform: rotate(30deg);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-        
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .skill-card {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-card:hover {
+        .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+        
+        .dark .section-divider {
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            transform: scale(1.05);
         }
         
         .project-card {
             transition: all 0.3s ease;
+            perspective: 1000px;
         }
         
-        .project-card:hover {
-            transform: translateY(-5px);
+        .project-card:hover .project-card-inner {
+            transform: rotateY(10deg);
         }
         
-        .floating {
-            animation: floating 3s ease-in-out infinite;
+        .project-card-inner {
+            transition: transform 0.6s;
         }
         
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 4px solid #e2e8f0;
         }
         
-        .wave {
-            animation: wave 2s linear infinite;
+        .dark .timeline-item::before {
+            background: #60a5fa;
+            border-color: #334155;
         }
         
-        @keyframes wave {
-            0% { transform: rotate(0deg); }
-            10% { transform: rotate(14deg); }
-            20% { transform: rotate(-8deg); }
-            30% { transform: rotate(14deg); }
-            40% { transform: rotate(-4deg); }
-            50% { transform: rotate(10deg); }
-            60% { transform: rotate(0deg); }
-            100% { transform: rotate(0deg); }
-        }
-        
-        .typewriter {
+        .language-meter {
+            height: 6px;
+            border-radius: 3px;
             overflow: hidden;
-            border-right: .15em solid var(--primary);
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .15em;
-            animation: 
-                typing 3.5s steps(40, end),
-                blink-caret .75s step-end infinite;
         }
         
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        .language-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 1s ease-in-out;
         }
         
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary); }
+        .dark .language-progress {
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+        }
+        
+        .mode-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .mode-toggle:hover {
+            transform: rotate(30deg);
         }
     </style>
 </head>
-<body class="dark">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-slate-900/80 dark:bg-slate-900/80 backdrop-blur-md shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="#" class="text-xl font-bold text-white flex items-center">
-                        <span class="bg-blue-500 p-2 rounded-lg mr-2">VA</span>
-                        Vasanthakumar VA 
-                    </a>
+                    <a href="#home" class="text-xl font-bold gradient-text">VasanthaKumar</a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="nav-link text-white hover:text-blue-400">About</a>
-                    <a href="#skills" class="nav-link text-white hover:text-blue-400">Skills</a>
-                    <a href="#projects" class="nav-link text-white hover:text-blue-400">Projects</a>
-                    <a href="#education" class="nav-link text-white hover:text-blue-400">Education</a>
-                    <a href="#contact" class="nav-link text-white hover:text-blue-400">Contact</a>
-                    <button id="theme-toggle" class="theme-toggle p-2 rounded-full bg-slate-800 text-white hover:bg-slate-700">
-                        <i class="fas fa-moon"></i>
+                    <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
+                    <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a>
+                    <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a>
+                    <a href="#education" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Education</a>
+                    <button id="theme-toggle" class="mode-toggle p-2 rounded-full focus:outline-none">
+                        <i id="theme-icon" class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
                     </button>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-white">
-                        <i class="fas fa-bars text-xl"></i>
+                    <button id="mobile-menu-button" class="p-2 rounded-md focus:outline-none">
+                        <i class="fas fa-bars text-gray-700 dark:text-gray-300"></i>
                     </button>
                 </div>
             </div>
         </div>
         
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 pb-4 px-4">
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 pb-4 px-4 shadow-lg">
             <div class="flex flex-col space-y-3">
-                <a href="#about" class="nav-link text-white hover:text-blue-400">About</a>
-                <a href="#skills" class="nav-link text-white hover:text-blue-400">Skills</a>
-                <a href="#projects" class="nav-link text-white hover:text-blue-400">Projects</a>
-                <a href="#education" class="nav-link text-white hover:text-blue-400">Education</a>
-                <a href="#contact" class="nav-link text-white hover:text-blue-400">Contact</a>
-                <div class="pt-2">
-                    <button id="theme-toggle-mobile" class="theme-toggle p-2 rounded-full bg-slate-800 text-white hover:bg-slate-700">
-                        <i class="fas fa-moon"></i> Toggle Theme
-                    </button>
-                </div>
+                <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition py-2">Home</a>
+                <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition py-2">About</a>
+                <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition py-2">Skills</a>
+                <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition py-2">Projects</a>
+                <a href="#education" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition py-2">Education</a>
+                <button id="theme-toggle-mobile" class="text-left py-2 text-gray-700 dark:text-gray-300 flex items-center">
+                    <i id="theme-icon-mobile" class="fas fa-moon mr-2 text-gray-700 dark:text-yellow-300"></i>
+                    Toggle Theme
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="text-blue-400">Vasanthakumar</span></h1>
-                    <div class="typewriter text-xl md:text-2xl mb-6">
-                        AI/ML Enthusiast&Full Stack Developer
-                    </div>
-                    <p class="text-lg mb-8">Passionate about building smart systems and solving real-world problems with AI.</p>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <a href="#contact" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg font-medium transition duration-300 transform hover:scale-105">
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                        Hi, I'm <span class="gradient-text">Vasanthakumar</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-6">
+                        AI/ML Enthusiast & Developer
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
+                        Passionate about building smart systems and solving real-world problems with AI.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
                             Contact Me
                         </a>
-                        <a href="#projects" class="px-6 py-3 border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white rounded-lg font-medium transition duration-300 transform hover:scale-105">
+                        <a href="#projects" class="px-6 py-3 border-2 border-blue-500 text-blue-500 dark:text-blue-400 dark:border-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-800 transition duration-300 transform hover:scale-105">
                             View Projects
                         </a>
                     </div>
-                    <div class="flex justify-center md:justify-start gap-4 mt-8">
-                        <a href="https://github.com/vasanthjoseph" target="_blank" class="text-2xl hover:text-blue-400 transition duration-300">
-                            <i class="fab fa-github"></i>
+                    <div class="flex mt-8 space-x-4">
+                        <a href="https://github.com/vasanthjoseph" target="_blank" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition transform hover:scale-125">
+                            <i class="fab fa-github text-2xl"></i>
                         </a>
-                        <a href="http://www.linkedin.com/in/vasanthakumar-a-a5b54a282" target="_blank" class="text-2xl hover:text-blue-400 transition duration-300">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="http://www.linkedin.com/in/vasanthakumar-a-a5b54a282" target="_blank" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition transform hover:scale-125">
+                            <i class="fab fa-linkedin text-2xl"></i>
                         </a>
-                        <a href="mailto:vasantharul55@gmail.com" class="text-2xl hover:text-blue-400 transition duration-300">
-                            <i class="fas fa-envelope"></i>
+                        <a href="mailto:vasantharul55@gmail.com" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition transform hover:scale-125">
+                            <i class="fas fa-envelope text-2xl"></i>
                         </a>
                     </div>
                 </div>
-                <div class="flex justify-center">
-                    <div class="relative w-64 h-64 md:w-80 md:h-80">
-                        <div class="absolute inset-0 bg-blue-500 rounded-full opacity-20 animate-pulse"></div>
-                        <div class="absolute inset-4 bg-blue-400 rounded-full opacity-30 animate-pulse delay-100"></div>
-                        <div class="absolute inset-8 bg-blue-300 rounded-full opacity-20 animate-pulse delay-200"></div>
-                        <img src="My pic.jpg" alt="Profile" class="relative w-full h-full rounded-full object-cover border-4 border-blue-500 floating">
+                <div class="md:w-1/2 flex justify-center animate-float">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 opacity-20"></div>
+                        <img src="My pic.jpg" 
+                             alt="Profile" 
+                             class="w-full h-full object-cover mix-blend-multiply">
                     </div>
                 </div>
             </div>
@@ -223,43 +223,52 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section py-20 bg-slate-800 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="text-blue-400">Me</span></h2>
-                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+                <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                <div class="section-divider"></div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1">
-                    <p class="text-lg mb-6">I'm a Computer Science student learning Artificial Intelligence and Machine Learning. I have a good understanding of Python, data analysis, and basic machine learning algorithms.</p>
-                    <p class="text-lg mb-6">I'm currently working on small projects and learning tools like NumPy, Pandas, Scikit-learn, and TensorFlow.</p>
-                    <p class="text-lg">I'm passionate about building smart systems and solving real-world problems with AI. I'm looking for opportunities to apply my skills and grow as an AI Engineer.</p>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1536104968055-4d61aa56f46a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                             alt="About" 
+                             class="w-full h-full object-cover">
+                    </div>
                 </div>
-                <div class="order-1 md:order-2">
-                    <div class="bg-slate-700 p-8 rounded-xl shadow-xl">
-                        <h3 class="text-xl font-bold mb-4 text-blue-400">Personal Info</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <i class="fas fa-envelope mr-4 text-blue-400"></i>
-                                <span>vasantharul55@gmail.com</span>
+                <div class="md:w-2/3 md:pl-12">
+                    <p class="text-lg mb-6 animate-slide-up">
+                        I'm a Computer Science student specializing in Artificial Intelligence and Machine Learning. 
+                        I have a solid understanding of Python, data analysis, and fundamental machine learning algorithms. 
+                        Currently, I'm enhancing my skills with tools like NumPy, Pandas, Scikit-learn, and TensorFlow through hands-on projects.
+                    </p>
+                    <p class="text-lg mb-6 animate-slide-up">
+                        My passion lies in developing intelligent systems that address real-world challenges. 
+                        I'm actively seeking opportunities to apply my knowledge and grow as an AI Engineer, 
+                        contributing to innovative solutions that make a meaningful impact.
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                        <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md animate-slide-up" style="animation-delay: 0.1s">
+                            <div class="text-blue-500 dark:text-blue-400 mb-2">
+                                <i class="fas fa-laptop-code text-2xl"></i>
                             </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-phone mr-4 text-blue-400"></i>
-                                <span>+91-88254478XX</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-map-marker-alt mr-4 text-blue-400"></i>
-                                <span>Thoothukudi, Tamil Nadu, India</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-language mr-4 text-blue-400"></i>
-                                <span>English, Tamil</span>
-                            </div>
+                            <h3 class="font-semibold">AI/ML Focus</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Specializing in intelligent systems</p>
                         </div>
-                        <div class="mt-8">
-                            <a href="https://github.com/vasanthjoseph/vasanthjoseph/raw/main/resume.pdf" target="_blank" class="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg font-medium transition duration-300">
-                                Download Resume
-                            </a>
+                        <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md animate-slide-up" style="animation-delay: 0.2s">
+                            <div class="text-purple-500 dark:text-purple-400 mb-2">
+                                <i class="fas fa-project-diagram text-2xl"></i>
+                            </div>
+                            <h3 class="font-semibold">Project Experience</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Multiple completed projects</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md animate-slide-up" style="animation-delay: 0.3s">
+                            <div class="text-green-500 dark:text-green-400 mb-2">
+                                <i class="fas fa-graduation-cap text-2xl"></i>
+                            </div>
+                            <h3 class="font-semibold">Continuous Learning</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Always expanding knowledge</p>
                         </div>
                     </div>
                 </div>
@@ -268,334 +277,315 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section py-20 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical <span class="text-blue-400">Skills</span></h2>
-                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+                <h2 class="text-3xl font-bold mb-4">Technical Skills</h2>
+                <div class="section-divider"></div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Programming Languages -->
-                <div class="skill-card bg-slate-800 p-6 rounded-xl hover:shadow-lg transition duration-300">
-                    <div class="text-blue-400 text-4xl mb-4">
-                        <i class="fas fa-code"></i>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-code text-blue-500 dark:text-blue-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Programming Languages</h3>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Programming</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>Python</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>Java</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>C</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>R</span>
-                        </li>
-                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Python</span>
+                        <span class="skill-pill px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Java</span>
+                        <span class="skill-pill px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">C</span>
+                        <span class="skill-pill px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">R</span>
+                    </div>
                 </div>
                 
                 <!-- Web Technologies -->
-                <div class="skill-card bg-slate-800 p-6 rounded-xl hover:shadow-lg transition duration-300">
-                    <div class="text-blue-400 text-4xl mb-4">
-                        <i class="fas fa-globe"></i>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up" style="animation-delay: 0.1s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 dark:bg-purple-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-globe text-purple-500 dark:text-purple-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Web Technologies</h3>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Web Technologies</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>HTML/CSS</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>Tailwind CSS</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>Bootstrap</span>
-                        </li>
-                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">HTML</span>
+                        <span class="skill-pill px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">CSS</span>
+                        <span class="skill-pill px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">Tailwind CSS</span>
+                        <span class="skill-pill px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">Bootstrap</span>
+                    </div>
                 </div>
                 
                 <!-- Frameworks/Libraries -->
-                <div class="skill-card bg-slate-800 p-6 rounded-xl hover:shadow-lg transition duration-300">
-                    <div class="text-blue-400 text-4xl mb-4">
-                        <i class="fas fa-cubes"></i>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up" style="animation-delay: 0.2s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 dark:bg-green-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-cubes text-green-500 dark:text-green-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Frameworks/Libraries</h3>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Frameworks</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>React.js</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>Node.js</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>Express.js</span>
-                        </li>
-                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">React.js</span>
+                        <span class="skill-pill px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Node.js</span>
+                        <span class="skill-pill px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Express.js</span>
+                    </div>
                 </div>
                 
-                <!-- Database & Tools -->
-                <div class="skill-card bg-slate-800 p-6 rounded-xl hover:shadow-lg transition duration-300">
-                    <div class="text-blue-400 text-4xl mb-4">
-                        <i class="fas fa-database"></i>
+                <!-- Database Technologies -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up" style="animation-delay: 0.3s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 dark:bg-yellow-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-database text-yellow-500 dark:text-yellow-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Database Technologies</h3>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Database & Tools</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>MySQL</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>MongoDB</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>Git/GitHub</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-blue-400 mr-2"></i>
-                            <span>AWS (EC2, S3)</span>
-                        </li>
-                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-4 py-2 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full">MySQL</span>
+                        <span class="skill-pill px-4 py-2 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full">MongoDB</span>
+                    </div>
+                </div>
+                
+                <!-- Tools & Platforms -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up" style="animation-delay: 0.4s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 dark:bg-red-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-tools text-red-500 dark:text-red-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Tools & Platforms</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-4 py-2 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Git</span>
+                        <span class="skill-pill px-4 py-2 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">GitHub</span>
+                        <span class="skill-pill px-4 py-2 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">VS Code</span>
+                        <span class="skill-pill px-4 py-2 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">AWS (EC2, S3)</span>
+                        <span class="skill-pill px-4 py-2 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Power BI</span>
+                        <span class="skill-pill px-4 py-2 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Tableau</span>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up" style="animation-delay: 0.5s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-brain text-indigo-500 dark:text-indigo-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Soft Skills</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Problem Solving</span>
+                        <span class="skill-pill px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Teamwork</span>
+                        <span class="skill-pill px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Communication</span>
+                        <span class="skill-pill px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Time Management</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section py-20 bg-slate-800 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-blue-400">Projects</span></h2>
-                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+                <h2 class="text-3xl font-bold mb-4">Featured Projects</h2>
+                <div class="section-divider"></div>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="project-card bg-slate-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-blue-500 flex items-center justify-center">
-                        <i class="fas fa-book-reader text-6xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Voice-Enabled Document Reader</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">Python</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">Tkinter</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">Pyttsx3</span>
+                <div class="project-card">
+                    <div class="project-card-inner bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg h-full flex flex-col transform transition duration-500">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Voice-Enabled Document Reader" 
+                                 class="w-full h-full object-cover transition duration-500 hover:scale-105">
                         </div>
-                        <p class="text-gray-300 mb-4">Developed a desktop application that reads uploaded text and PDF documents aloud with voice highlighting and summarization.</p>
-                        <ul class="text-sm text-gray-400 space-y-1 mb-4">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Extracts content from .pdf and .txt files</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Converts text to speech using Pyttsx3</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Allows voice control and summary generation</span>
-                            </li>
-                        </ul>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-bold mb-2">Voice-Enabled Document Reader</h3>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Python</span>
+                                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Tkinter</span>
+                                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Pyttsx3</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                Developed a desktop application that reads uploaded text and PDF documents aloud with voice highlighting and summarization features.
+                            </p>
+                            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Extracts content from .pdf and .txt files</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Converts text to speech using Pyttsx3</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Allows voice control and summary generation</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="project-card bg-slate-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-blue-500 flex items-center justify-center">
-                        <i class="fas fa-cloud text-6xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">AWS Café Website Deployment</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">AWS EC2</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">S3</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">RDS</span>
+                <div class="project-card">
+                    <div class="project-card-inner bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg h-full flex flex-col transform transition duration-500">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="AWS Café Website Deployment" 
+                                 class="w-full h-full object-cover transition duration-500 hover:scale-105">
                         </div>
-                        <p class="text-gray-300 mb-4">Deployed a PHP-based café application using LAMP stack on EC2 and configured database access using Secrets Manager.</p>
-                        <ul class="text-sm text-gray-400 space-y-1 mb-4">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Hands-on experience with cross-region deployment</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Used Cloud9, IAM roles, and RDS MySQL</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Created AMI and replicated deployment</span>
-                            </li>
-                        </ul>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-bold mb-2">AWS Café Website Deployment</h3>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">AWS EC2</span>
+                                <span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">S3</span>
+                                <span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">RDS</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                Deployed a PHP-based café application using LAMP stack on EC2 and configured database access using Secrets Manager.
+                            </p>
+                            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Hands-on experience with cross-region deployment</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Database integration using RDS MySQL</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Created AMI and replicated across AWS regions</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="project-card bg-slate-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-blue-500 flex items-center justify-center">
-                        <i class="fas fa-chart-line text-6xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Student Grade Analysis Web App</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">HTML</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">CSS</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">JavaScript</span>
+                <div class="project-card">
+                    <div class="project-card-inner bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg h-full flex flex-col transform transition duration-500">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Student Grade Analysis Web App" 
+                                 class="w-full h-full object-cover transition duration-500 hover:scale-105">
                         </div>
-                        <p class="text-gray-300 mb-4">Built a web app for visualizing student performance using form input and table displays with GPA calculations and charts.</p>
-                        <ul class="text-sm text-gray-400 space-y-1 mb-4">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Interactive data visualization</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Form input and table displays</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>GPA calculations and analytics</span>
-                            </li>
-                        </ul>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-bold mb-2">Student Grade Analysis Web App</h3>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">HTML</span>
+                                <span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">CSS</span>
+                                <span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">JavaScript</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                Built a web app for visualizing student performance using form input and table displays with GPA calculations.
+                            </p>
+                            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Interactive data visualization</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>GPA calculation functionality</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Chart analytics for performance tracking</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Project 4 -->
-                <div class="project-card bg-slate-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-blue-500 flex items-center justify-center">
-                        <i class="fas fa-sign-language text-6xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Indian Sign Language Translator</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">Python</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">AI/ML</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">3D Modeling</span>
+                <div class="project-card">
+                    <div class="project-card-inner bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg h-full flex flex-col transform transition duration-500">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Indian Sign Language Translator" 
+                                 class="w-full h-full object-cover transition duration-500 hover:scale-105">
                         </div>
-                        <p class="text-gray-300 mb-4">Created a bidirectional translator between speech/text and Indian Sign Language using machine learning models.</p>
-                        <ul class="text-sm text-gray-400 space-y-1 mb-4">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Improves communication accessibility</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Uses AI/ML algorithms</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Developed with 3D models</span>
-                            </li>
-                        </ul>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-bold mb-2">Indian Sign Language Translator</h3>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full">Python</span>
+                                <span class="text-xs px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full">AI/ML</span>
+                                <span class="text-xs px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full">3D Modeling</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                Created a bidirectional translator between speech/text and Indian Sign Language using machine learning models.
+                            </p>
+                            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Improves communication accessibility</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Uses AI/ML algorithms</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Developed with 3D models</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Project 5 -->
-                <div class="project-card bg-slate-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                    <div class="h-48 bg-blue-500 flex items-center justify-center">
-                        <i class="fas fa-file-alt text-6xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">AI-Based Resume Builder</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">Python</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">Streamlit</span>
-                            <span class="px-3 py-1 bg-blue-900 text-blue-200 rounded-full text-xs">PDF Generation</span>
+                <div class="project-card">
+                    <div class="project-card-inner bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg h-full flex flex-col transform transition duration-500">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="AI-Based Resume Builder" 
+                                 class="w-full h-full object-cover transition duration-500 hover:scale-105">
                         </div>
-                        <p class="text-gray-300 mb-4">A simple resume builder made using Python and Streamlit that generates clean, single-page PDF resumes.</p>
-                        <ul class="text-sm text-gray-400 space-y-1 mb-4">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Build professional resumes easily</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Clean, single-page format</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-blue-400 mr-2 mt-1"></i>
-                                <span>Download resume in PDF format</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education & Certifications -->
-    <section id="education" class="section py-20 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Education & <span class="text-blue-400">Certifications</span></h2>
-                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Education -->
-                <div class="bg-slate-800 p-8 rounded-xl">
-                    <h3 class="text-2xl font-bold mb-6 text-blue-400">Education</h3>
-                    <div class="space-y-8">
-                        <div class="relative pl-8 border-l-2 border-blue-500">
-                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-blue-500"></div>
-                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-blue-500 animate-ping"></div>
-                            <div class="mb-2">
-                                <h4 class="text-lg font-bold">Bachelor of Computer Science and Engineering (B.E)</h4>
-                                <p class="text-gray-400">St. Mother Theresa Engineering College, Thoothukudi</p>
-                                <p class="text-gray-400">Expected 2026</p>
-                                <p class="text-gray-400">CGPA: 8.3 (Till 5th Semester)</p>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-bold mb-2">AI-Based Resume Builder</h3>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Python</span>
+                                <span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Streamlit</span>
+                                <span class="text-xs px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">PDF Generation</span>
                             </div>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                A simple resume builder that helps users fill in their details and generates a clean, single-page PDF resume.
+                            </p>
+                            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Build professional resumes easily</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Clean, well-formatted output</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Download as PDF functionality</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Certifications -->
-                <div class="bg-slate-800 p-8 rounded-xl">
-                    <h3 class="text-2xl font-bold mb-6 text-blue-400">Certifications</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <i class="fas fa-certificate text-blue-400 mt-1 mr-3"></i>
-                            <span>AWS Cloud Practitioner Essentials – AWS Skill Builder</span>
+                <!-- Project 6 (Placeholder for future projects) -->
+                <div class="project-card">
+                    <div class="project-card-inner bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg h-full flex flex-col transform transition duration-500">
+                        <div class="h-48 bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
+                            <i class="fas fa-plus text-white text-5xl opacity-70"></i>
                         </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-certificate text-blue-400 mt-1 mr-3"></i>
-                            <span>Introduction to Indian Sign Language – NSDC</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-certificate text-blue-400 mt-1 mr-3"></i>
-                            <span>Blender 3D Modeling Workshop – Coursera</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-certificate text-blue-400 mt-1 mr-3"></i>
-                            <span>Hackerang - 5star in Python</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-certificate text-blue-400 mt-1 mr-3"></i>
-                            <span>AI and Data Science - Geeks for Geeks</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-certificate text-blue-400 mt-1 mr-3"></i>
-                            <span>Cyber Security - Google Cloud</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-certificate text-blue-400 mt-1 mr-3"></i>
-                            <span>Power BI - Microsoft learn</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-certificate text-blue-400 mt-1 mr-3"></i>
-                            <span>Guvi - ChatGPT Everyone</span>
+                        <div class="p-6 flex-grow flex flex-col items-center justify-center">
+                            <h3 class="text-xl font-bold mb-2 text-center">Your Project Here</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-center">
+                                I'm constantly working on new projects. Stay tuned for more!
+                            </p>
+                            <a href="#contact" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                                Let's Collaborate
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -603,80 +593,209 @@
         </div>
     </section>
 
-    <!-- Soft Skills -->
-    <section class="section py-20 bg-slate-800 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Certifications Section -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Soft <span class="text-blue-400">Skills</span></h2>
-                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+                <h2 class="text-3xl font-bold mb-4">Certifications</h2>
+                <div class="section-divider"></div>
             </div>
             
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-                <div class="bg-slate-700 p-4 rounded-lg text-center hover:bg-blue-500 transition duration-300">
-                    <i class="fas fa-lightbulb text-3xl mb-2"></i>
-                    <p>Problem Solving</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Certification 1 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 animate-slide-up">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-cloud text-blue-500 dark:text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">AWS Cloud Practitioner Essentials</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        AWS Skill Builder - Gained foundational knowledge of AWS cloud concepts and services.
+                    </p>
                 </div>
-                <div class="bg-slate-700 p-4 rounded-lg text-center hover:bg-blue-500 transition duration-300">
-                    <i class="fas fa-clock text-3xl mb-2"></i>
-                    <p>Time Management</p>
+                
+                <!-- Certification 2 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 animate-slide-up" style="animation-delay: 0.1s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 dark:bg-purple-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-hands-helping text-purple-500 dark:text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">Introduction to Indian Sign Language</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        NSDC - Learned fundamentals of Indian Sign Language to improve communication accessibility.
+                    </p>
                 </div>
-                <div class="bg-slate-700 p-4 rounded-lg text-center hover:bg-blue-500 transition duration-300">
-                    <i class="fas fa-users text-3xl mb-2"></i>
-                    <p>Team Collaboration</p>
+                
+                <!-- Certification 3 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 animate-slide-up" style="animation-delay: 0.2s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 dark:bg-green-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-cube text-green-500 dark:text-green-400"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">Blender 3D Modeling Workshop</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Coursera - Acquired skills in 3D modeling and animation using Blender software.
+                    </p>
                 </div>
-                <div class="bg-slate-700 p-4 rounded-lg text-center hover:bg-blue-500 transition duration-300">
-                    <i class="fas fa-book text-3xl mb-2"></i>
-                    <p>Willingness to Learn</p>
+                
+                <!-- Certification 4 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 animate-slide-up" style="animation-delay: 0.3s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 dark:bg-yellow-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-code text-yellow-500 dark:text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">HackerRank - 5 Star in Python</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Demonstrated advanced Python programming skills through competitive coding challenges.
+                    </p>
                 </div>
-                <div class="bg-slate-700 p-4 rounded-lg text-center hover:bg-blue-500 transition duration-300">
-                    <i class="fas fa-check-circle text-3xl mb-2"></i>
-                    <p>Decision Making</p>
+                
+                <!-- Certification 5 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 animate-slide-up" style="animation-delay: 0.4s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 dark:bg-red-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-brain text-red-500 dark:text-red-400"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">AI and Data Science</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Geeks for Geeks - Enhanced knowledge in artificial intelligence and data science concepts.
+                    </p>
                 </div>
-                <div class="bg-slate-700 p-4 rounded-lg text-center hover:bg-blue-500 transition duration-300">
-                    <i class="fas fa-comments text-3xl mb-2"></i>
-                    <p>Communication</p>
+                
+                <!-- Certification 6 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 animate-slide-up" style="animation-delay: 0.5s">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 dark:bg-indigo-900 p-3 rounded-full mr-4">
+                            <i class="fas fa-shield-alt text-indigo-500 dark:text-indigo-400"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold">Cyber Security</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Google Cloud - Learned fundamentals of cybersecurity and cloud security best practices.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Education</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Education Timeline -->
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-4 md:left-1/2 h-full w-0.5 bg-gray-300 dark:bg-gray-600"></div>
+                    
+                    <!-- Education Item 1: School Qualification (Left Side) -->
+                    <div class="mb-8 flex justify-between items-center w-full timeline-item">
+                        <div class="order-1 w-5/12 px-4 py-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                            <h3 class="text-lg font-bold mb-2">Higher Secondary School (Bio-Maths)</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-1">Government Higher Secondary School, Kurukuchalai</p>
+                            <p class="text-gray-500 dark:text-gray-500 text-sm">Group: Bio-Maths</p>
+                            <p class="text-gray-500 dark:text-gray-500 text-sm">Grade: A</p>
+                            <p class="text-gray-500 dark:text-gray-500 text-sm">Year: 2021-2022</p>
+                        </div>
+                        <div class="order-1 w-5/12"></div>
+                    </div>
+                    
+                    <!-- Education Item 2: College Qualification (Right Side) -->
+                    <div class="mb-8 flex justify-between items-center w-full timeline-item">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="order-1 w-5/12 px-4 py-4 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                            <h3 class="text-lg font-bold mb-2">Bachelor of Computer Science and Engineering (B.E)</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-1">St. Mother Theresa Engineering College, Thoothukudi</p>
+                            <p class="text-gray-500 dark:text-gray-500 text-sm">Expected Graduation: 2026</p>
+                            <p class="text-gray-500 dark:text-gray-500 text-sm">CGPA: 8.3 (Till 5th Semester)</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Languages Section -->
+                    <div class="text-center mt-16 mb-8">
+                        <h3 class="text-2xl font-bold mb-6">Languages Known</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+                            <div>
+                                <h4 class="font-semibold mb-2">English</h4>
+                                <div class="language-meter bg-gray-200 dark:bg-gray-700">
+                                    <div class="language-progress" style="width: 90%"></div>
+                                </div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Professional Proficiency</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Tamil</h4>
+                                <div class="language-meter bg-gray-200 dark:bg-gray-700">
+                                    <div class="language-progress" style="width: 100%"></div>
+                                </div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Native Proficiency</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Hindi</h4>
+                                <div class="language-meter bg-gray-200 dark:bg-gray-700">
+                                    <div class="language-progress" style="width: 70%"></div>
+                                </div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Intermediate</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section py-20 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="text-blue-400">Touch</span></h2>
-                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+                <h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
+                <div class="section-divider"></div>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+                </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
+                <div class="animate-slide-up">
                     <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
                     <div class="space-y-6">
                         <div class="flex items-start">
-                            <div class="bg-blue-500 p-3 rounded-full mr-4">
-                                <i class="fas fa-envelope text-white"></i>
+                            <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-500 dark:text-blue-400"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Email</h4>
-                                <a href="mailto:vasantharul55@gmail.com" class="text-gray-400 hover:text-blue-400">vasantharul55@gmail.com</a>
+                                <h4 class="font-semibold">Email</h4>
+                                <a href="mailto:vasantharul55@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition">
+                                    vasantharul55@gmail.com
+                                </a>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-blue-500 p-3 rounded-full mr-4">
-                                <i class="fas fa-phone text-white"></i>
+                            <div class="bg-purple-100 dark:bg-purple-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-purple-500 dark:text-purple-400"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Phone</h4>
-                                <p class="text-gray-400">+91-88254478XX</p>
+                                <h4 class="font-semibold">Phone</h4>
+                                <a href="tel:+9188254478XX" class="text-gray-600 dark:text-gray-400 hover:text-purple-500 dark:hover:text-purple-400 transition">
+                                    +91-88254478XX
+                                </a>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-blue-500 p-3 rounded-full mr-4">
-                                <i class="fas fa-map-marker-alt text-white"></i>
+                            <div class="bg-green-100 dark:bg-green-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-green-500 dark:text-green-400"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Location</h4>
-                                <p class="text-gray-400">Thoothukudi, Tamil Nadu, India</p>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Thoothukudi, Tamil Nadu, India</p>
                             </div>
                         </div>
                     </div>
@@ -684,41 +803,43 @@
                     <div class="mt-10">
                         <h3 class="text-2xl font-bold mb-6">Connect With Me</h3>
                         <div class="flex space-x-4">
-                            <a href="http://www.linkedin.com/in/vasanthakumar-a-a5b54a282" target="_blank" class="bg-slate-800 hover:bg-blue-500 w-12 h-12 rounded-full flex items-center justify-center transition duration-300">
-                                <i class="fab fa-linkedin-in text-xl"></i>
-                            </a>
-                            <a href="https://github.com/vasanthjoseph" target="_blank" class="bg-slate-800 hover:bg-blue-500 w-12 h-12 rounded-full flex items-center justify-center transition duration-300">
+                            <a href="https://github.com/vasanthjoseph" target="_blank" class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition transform hover:scale-110">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
-                            <a href="mailto:vasantharul55@gmail.com" class="bg-slate-800 hover:bg-blue-500 w-12 h-12 rounded-full flex items-center justify-center transition duration-300">
+                            <a href="http://www.linkedin.com/in/vasanthakumar-a-a5b54a282" target="_blank" class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition transform hover:scale-110">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="mailto:vasantharul55@gmail.com" class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition transform hover:scale-110">
                                 <i class="fas fa-envelope text-xl"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <div>
-                    <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
-                    <form class="space-y-6">
-                        <div>
-                            <label for="name" class="block mb-2">Your Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="animate-slide-up" style="animation-delay: 0.1s">
+                    <form class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                                Send Message
+                            </button>
                         </div>
-                        <div>
-                            <label for="email" class="block mb-2">Your Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="subject" class="block mb-2">Subject</label>
-                            <input type="text" id="subject" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="message" class="block mb-2">Message</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                        </div>
-                        <button type="submit" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg font-medium transition duration-300 w-full">
-                            Send Message
-                        </button>
                     </form>
                 </div>
             </div>
@@ -726,111 +847,103 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p>&copy; 2023 Vasanthakumar A. All rights reserved.</p>
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-xl font-bold gradient-text">Vasanthakumar A</a>
+                    <p class="mt-2 text-gray-400">AI/ML Enthusiast & Developer</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#about" class="hover:text-blue-400">About</a>
-                    <a href="#skills" class="hover:text-blue-400">Skills</a>
-                    <a href="#projects" class="hover:text-blue-400">Projects</a>
-                    <a href="#contact" class="hover:text-blue-400">Contact</a>
+                    <a href="https://github.com/vasanthjoseph" target="_blank" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="http://www.linkedin.com/in/vasanthakumar-a-a5b54a282" target="_blank" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="mailto:vasantharul55@gmail.com" class="text-gray-400 hover:text-white transition">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
                 </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Vasanthakumar A. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Theme toggle
+        // Dark/Light mode toggle
         const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
         const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-        const html = document.documentElement;
-
-        // Helper to set theme icons
-        function setThemeIcons(theme) {
-            if (theme === 'light') {
-                if (themeToggle) themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                if (themeToggleMobile) themeToggleMobile.innerHTML = '<i class="fas fa-sun"></i> Toggle Theme';
-            } else {
-                if (themeToggle) themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                if (themeToggleMobile) themeToggleMobile.innerHTML = '<i class="fas fa-moon"></i> Toggle Theme';
-            }
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            themeIconMobile.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            themeIconMobile.classList.replace('fa-sun', 'fa-moon');
         }
-
-        // Set theme on load
-        function setInitialTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                html.classList.remove('dark');
-                html.classList.add('light');
-                setThemeIcons('light');
-            } else {
-                html.classList.remove('light');
-                html.classList.add('dark');
-                setThemeIcons('dark');
-            }
-        }
-
-        setInitialTheme();
-
+        
+        themeToggle.addEventListener('click', function() {
+            toggleTheme();
+        });
+        
+        themeToggleMobile.addEventListener('click', function() {
+            toggleTheme();
+        });
+        
         function toggleTheme() {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.classList.add('light');
-                setThemeIcons('light');
-                localStorage.setItem('theme', 'light');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                    themeIconMobile.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                    themeIconMobile.classList.replace('fa-sun', 'fa-moon');
+                }
             } else {
-                html.classList.remove('light');
-                html.classList.add('dark');
-                setThemeIcons('dark');
-                localStorage.setItem('theme', 'dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                    themeIconMobile.classList.replace('fa-sun', 'fa-moon');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                    themeIconMobile.classList.replace('fa-moon', 'fa-sun');
+                }
             }
         }
-
-        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
-        if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
-
+        
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
-        mobileMenuButton.addEventListener('click', () => {
+        mobileMenuButton.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
         });
         
-        // Close mobile menu when clicking a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
                 mobileMenu.classList.add('hidden');
             });
         });
         
-        // Scroll animation
-        const sections = document.querySelectorAll('.section');
-        
-        function checkScroll() {
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (sectionTop < windowHeight - 100) {
-                    section.classList.add('visible');
-                }
-            });
-        }
-        
-        // Initial check
-        checkScroll();
-        
-        // Check on scroll
-        window.addEventListener('scroll', checkScroll);
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
@@ -844,6 +957,48 @@
                 }
             });
         });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-slide-up, .animate-fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initialize animations
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Animate progress bars
+        const animateProgressBars = () => {
+            const progressBars = document.querySelectorAll('.language-progress');
+            const languageSection = document.getElementById('education');
+            const sectionPosition = languageSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (sectionPosition < windowHeight - 200) {
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+                
+                // Remove the event listener after animation
+                window.removeEventListener('scroll', animateProgressBars);
+            }
+        };
+        
+        window.addEventListener('scroll', animateProgressBars);
     </script>
 </body>
 </html>
